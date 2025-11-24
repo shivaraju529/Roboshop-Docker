@@ -7,27 +7,31 @@ services:
     #container_name: catalogue
     depends_on:
       - mongodb
+
   redis:
     image: redis:7.0
     #container_name: redis
-    volumes:
-    - redis:/data
+    # volumes:
+    # - redis:/data
+
   mysql:
     image: mysql:v1
     #container_name: mysql
+
   rabbitmq:
     image: rabbitmq:3
     #container_name: rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
-      
+
   user:
     image: user:v1
     #container_name: user
     depends_on:
     - mongodb
     - redis
+    
   cart:
     image: cart:v1
     #container_name: cart
