@@ -75,7 +75,7 @@ networks:
   default:
     driver: bridge
     name: roboshop
-    external: true
+    external: false
 
 volumes:
   mongodb: # docker volume create mongodb. /var/lib/docker/volumes
