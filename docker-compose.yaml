@@ -1,30 +1,30 @@
 services:
   mongodb:
     image: mongodb:v1
-    #container_name: mongodb
+    container_name: mongodb
     volumes:
     - mongodb:/data/db
   catalogue:
     image: catalogue:v1
-    #container_name: catalogue
+    container_name: catalogue
     depends_on:
       - mongodb
 
   redis:
     image: redis:7.0
-    #container_name: redis
+    container_name: redis
     volumes:
     - redis:/data
 
   mysql:
     image: mysql:v1
-    #container_name: mysql
+    container_name: mysql
     volumes:
     - mysql:/var/lib/mysql
 
   rabbitmq:
     image: rabbitmq:3
-    #container_name: rabbitmq
+    container_name: rabbitmq
     volumes: # -v rabbitmq:/var/lib/rabbitmq
     - rabbitmq:/var/lib/rabbitmq
     environment:
@@ -33,27 +33,27 @@ services:
 
   user:
     image: user:v1
-    #container_name: user
+    container_name: user
     depends_on:
     - mongodb
     - redis
 
   cart:
     image: cart:v1
-    #container_name: cart
+    container_name: cart
     depends_on:
     - redis
     - catalogue
   
   shipping:
     image: shipping:v1
-    #container_name: shipping
+    container_name: shipping
     depends_on:
     - mysql
     - cart
   payment:
     image: payment:v1
-    #container_name: payment
+    container_name: payment
     depends_on:
     - rabbitmq
     - cart
@@ -61,7 +61,7 @@ services:
 
   frontend:
     image: frontend:v1
-    #container_name: frontend
+    container_name: frontend
     ports:
     - "80:80"
     depends_on:
