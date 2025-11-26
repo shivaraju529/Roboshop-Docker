@@ -20,10 +20,11 @@ services:
 
   mysql:
     build: ./mysql
-    image: mysql:v1
-    container_name: shivaraju529/mysql
+    image: shivaraju529/mysql:v1   # if this is your image name on Docker Hub
+    #container_name: mysql          # <– changed
     volumes:
     - mysql:/var/lib/mysql
+
 
   rabbitmq:
     image: rabbitmq:3
